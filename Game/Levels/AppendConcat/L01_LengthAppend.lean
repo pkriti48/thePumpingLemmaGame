@@ -1,4 +1,4 @@
-import Game.MetaData
+import Game.Metadata
 
 namespace Word
 
@@ -18,7 +18,7 @@ Basically, to retrieve the length of any word ```word_1 ++ word_2``` either by c
 ```length (word_1 ++ word_2)``` or by calculating ```length word_1``` and ```length word_2```
 individually and add them. Both variants are equivalent to each other.
 -/
-TheoremDoc length_append as "length_append" in "Word"
+TheoremDoc Word.length_append as "length_append" in "Word"
 
 Statement length_append (word_1 word_2 : Word) : length (word_1 ++ word_2) = length word_1 + length word_2 := by
   Hint "You should start by induction on ```word_1```."
@@ -45,8 +45,8 @@ Statement length_append (word_1 word_2 : Word) : length (word_1 ++ word_2) = len
 
 TheoremTab "Word"
 
-NewTactic «repeat» simp
-NewDefinition Word.length zero_add add_assoc
+NewTactic induction simp «repeat» rfl rewrite
+NewDefinition Word.nil Word.cons Word.append Word.length zero_add add_assoc
 
 Conclusion "With this proof, you proved the equality of the terms ```length (word_1 ++ word_2)```
 and ```length word_1 + length word_2```. From now onwards, you can rewrite both terms to one another
