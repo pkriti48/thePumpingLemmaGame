@@ -1,5 +1,3 @@
-import Game.Levels.AppendConcat.L01_AppendNil
-
 World "The Append and Concat World"
 Title "The Append and Concat World"
 
